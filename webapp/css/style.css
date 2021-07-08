@@ -1,0 +1,39 @@
+.customNoPaddingFormContainer>div>div>.sapUiRespGridSpanXL6.sapUiRespGridSpanL6.sapUiRespGridSpanM6.sapUiRespGridSpanS12 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.customMarginFormFields>div>.sapUiRespGrid.sapUiRespGridHSpace0>div>div>div {
+    margin-bottom: 1rem;
+}
+
+.customPlanningCalendarHeaderDay>.sapMList.sapMListBGTranslucent.sapMListTblCnt>.sapMListInfoTBarContainer>div>div>.sapUiCalItem {
+    /*padding-top: 1rem;*/
+    padding-left: 0;
+    text-align: center;
+    border-radius: 0.25rem;
+    height: 3rem;
+}
+
+.customPlanningCalendarHeaderDayText>.sapMList.sapMListBGTranslucent.sapMListTblCnt>.sapMListInfoTBarContainer>div>div>.sapUiCalItem>.sapUiCalItemText {
+    padding-top: 1rem;
+    padding-left: 0;
+    text-align: center;
+}
+
+.customPlanningCalendarHeaderDay>.sapMList.sapMListBGTranslucent.sapMListTblCnt>.sapMListInfoTBarContainer>div>div>.sapUiCalItem>.sapUiCalItemText {
+    padding-top: 1rem;
+    padding-left: 0;
+    text-align: center;
+}
+
+.customPlanningCalendarHeaderDayName>.sapMList.sapMListBGTranslucent.sapMListTblCnt>.sapMListInfoTBarContainer>div>div>.sapUiCalItem>.sapUiCalDayName {
+    left: 0;
+    height: 100%;
+    width: 100%;
+    line-height: inherit;
+    padding-top: 0;
+    padding-right: 0;
+    text-align: center;
+    box-sizing: border-box;
+}

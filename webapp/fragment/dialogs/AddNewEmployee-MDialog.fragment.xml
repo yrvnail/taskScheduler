@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<Dialog id="AddNewEmployee-MDialog" title="{i18n>ts.taskScheduler.dialogs.addNewUser.title}" contentWidth="40rem">
+		<content>
+			<f:Form editable="true">
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0"
+						emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:label>
+									<Label text="{i18n>ts.taskScheduler.dialogs.addNewUser.employeeName}" required="true" wrapping="true"/>
+								</f:label>
+								<f:fields>
+									<Input id="AddNewEmployeeName-MInput" placeholder="{i18n>ts.taskScheduler.dialogs.addNewUser.employeeName.placeholder}" maxLength="50" liveChange="onValidateEmployee"/>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</content>
+		<beginButton><Button text="{i18n>ts.taskScheduler.dialogs.addNewUser.btn.Ok}" press="onPressAddNewUserOk" enabled="{tasks>/validateNewEmployee}"/></beginButton>
+		<endButton><Button text="{i18n>ts.taskScheduler.dialogs.addNewUser.btn.Cancel}" press="onPressAddNewUserCancel"/></endButton>
+	</Dialog>
+</core:FragmentDefinition>

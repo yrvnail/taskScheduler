@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:unified="sap.ui.unified" xmlns:dnd="sap.ui.core.dnd">
+	<List id="TasksList-M" items="{tasks>/UnassignedTasks}" growing="true" growingThreshold="50" includeItemInSelection="false">
+		<infoToolbar>
+			<OverflowToolbar visible="false" id="idInfoToolbar">
+				<Label id="idFilterLabel"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<dragDropConfig>
+			<dnd:DragDropInfo sourceAggregation="items" targetElement="TasksPlanningCalendar-M-Table" targetAggregation="items" dragStart="onListPlanningCalendardragStart" drop="onListPlanningCalendarDrop"/>
+		</dragDropConfig>
+		<CustomListItem type="Active">
+			<content>
+				<VBox class="sapUiSmallMargin">
+					<HBox class="sapUiTinyMarginTopBottom" width="100%">
+						<HBox justifyContent="Start" width="50%">
+							<Label visible="true" text="{tasks>TaskName}" design="Bold" wrapping="true"/>
+						</HBox>
+						<HBox justifyContent="End" width="50%">
+							<Label visible="true" text="{tasks>Days} {i18n>ts.taskScheduler.master.list.days}" wrapping="true"/>
+						</HBox>
+					</HBox>
+					<HBox class="sapUiTinyMarginTopBottom">
+						<HBox justifyContent="End" width="100%">
+							<Button text="{i18n>ts.taskScheduler.master.list.btn.delete}" press="onTaskDeletePress" type="Transparent"/>
+							<Button text="{i18n>ts.taskScheduler.master.list.btn.edit}" press="onTaskEditPress" type="Transparent"/>
+						</HBox>
+					</HBox>
+				</VBox>
+			</content>
+		</CustomListItem>
+	</List>
+</core:FragmentDefinition>

@@ -1,0 +1,47 @@
+<mvc:View controllerName="taskScheduler.controller.TaskScheduler" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:custom="taskScheduler.control" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:dnd="sap.ui.core.dnd">
+	<App>
+		<SplitApp id="app" initialDetail="detail-MPage" initialMaster="master-MPage">
+			<detailPages>
+				<Page id="detail-MPage" showHeader="false" busy="{tasks>/busy}" title="{i18n>ts.taskScheduler.title}">
+					<content>
+						<core:Fragment fragmentName="taskScheduler.fragment.TaskCalendar-M" type="XML"/>
+					</content>
+					<footer>
+						<OverflowToolbar>
+							<custom:CustomButton text="{i18n>ts.taskScheduler.footer.button.dropToTaskPool}" icon="sap-icon://toaster-down">
+								<custom:dragDropConfig>
+									<dnd:DropInfo drop="onUnassignTaskFromEmployee"/>
+								</custom:dragDropConfig>
+							</custom:CustomButton>
+							<ToolbarSpacer/>
+							<Button text="{i18n>ts.taskScheduler.footer.button.addUser}" icon="sap-icon://add-employee" press="onCreateUserPress"/>
+						</OverflowToolbar>
+					</footer>
+				</Page>
+			</detailPages>
+			<masterPages>
+				<Page id="master-MPage" title="{i18n>ts.taskScheduler.master.page.title}" backgroundDesign="List" icon="sap-icon://action"
+					class="sapUiStdPage">
+					<content>
+						<core:Fragment fragmentName="taskScheduler.fragment.PoolTaskList-M" type="XML"/>
+					</content>
+					<footer>
+						<OverflowToolbar>
+							<ToolbarSpacer/>
+							<Button id="addNewTask-MButton" icon="sap-icon://add" press="addNewTaskToPool"
+								tooltip="{i18n>ts.taskScheduler.master.toolbar.button.AddNewTask.tooltip}"/>
+						</OverflowToolbar>
+					</footer>
+				</Page>
+			</masterPages>
+		</SplitApp>
+		<dependents>
+			<core:Fragment fragmentName="taskScheduler.fragment.dialogs.AddNewEmployee-MDialog" type="XML"/>
+			<core:Fragment fragmentName="taskScheduler.fragment.dialogs.AddNewTask-MDialog" type="XML"/>
+			<core:Fragment fragmentName="taskScheduler.fragment.dialogs.EditTask-MDialog" type="XML"/>
+			<core:Fragment fragmentName="taskScheduler.fragment.dialogs.AssignTask-MDialog" type="XML"/>
+			<core:Fragment fragmentName="taskScheduler.fragment.dialogs.DisplayTask-MDialog" type="XML"/>
+		</dependents>
+	</App>
+</mvc:View>

@@ -1,0 +1,58 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<Dialog id="DisplayTask-MDialog" title="{i18n>ts.taskScheduler.dialogs.displayTask.title}" contentWidth="40rem">
+		<content>
+			<f:Form editable="true">
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0"
+						emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement>
+								<f:label>
+									<Label text="{i18n>ts.taskScheduler.dialogs.displayTask.employeeName}" wrapping="true"/>
+								</f:label>
+								<f:fields>
+									<Input value="{displayModel>/EmployeeName}" enabled="false"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement>
+								<f:label>
+									<Label text="{i18n>ts.taskScheduler.dialogs.displayTask.taskType}" wrapping="true"/>
+								</f:label>
+								<f:fields>
+									<Select items="{ path: 'tasks>/TaskType'}" selectedKey="{displayModel>/iconId}" enabled="false">
+										<core:Item key="{tasks>iconId}" text="{path: 'tasks>iconName', formatter: '.formatter.getI18nText'}"/>
+									</Select>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement>
+								<f:label>
+									<Label text="{i18n>ts.taskScheduler.dialogs.displayTask.taskDescription}" wrapping="true"/>
+								</f:label>
+								<f:fields>
+									<Input value="{displayModel>/TaskName}" enabled="false"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement>
+								<f:label>
+									<Label text="{i18n>ts.taskScheduler.dialogs.displayTask.dateAndDays}"/>
+								</f:label>
+								<f:fields>
+									<DateTimePicker displayFormat="short" value="{displayModel>/StartDate}" enabled="false"/>
+									<Input value="{displayModel>/Days}" enabled="false">
+										<layoutData>
+											<l:GridData span="XL1 L1 M2 S4"/>
+										</layoutData>
+									</Input>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</content>
+		<beginButton><Button text="{i18n>ts.taskScheduler.dialogs.displayTask.btn.Ok}" press="onPressDisplayTaskOk"/></beginButton>
+	</Dialog>
+</core:FragmentDefinition>

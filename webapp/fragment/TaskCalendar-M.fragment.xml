@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:unified="sap.ui.unified" xmlns:dnd="sap.ui.core.dnd">
+	<PlanningCalendar id="TasksPlanningCalendar-M" startDate="{path: 'tasks>/startDate', formatter:'.formatter.formatDate'}"
+		rows="{path: 'tasks>/Employees'}" appointmentsVisualization="Filled" appointmentSelect="onAppointmentSelectDisplay" viewKey="day" 
+		class="customPlanningCalendarHeaderDay customPlanningCalendarHeaderDayText customPlanningCalendarHeaderDayName">
+		<views>
+				<PlanningCalendarView
+					key="day"
+					intervalType="Hour"
+					description="{i18n>ts.taskScheduler.toolbar.viewType.day}"
+					intervalsS="9"
+					intervalsM="9"
+					intervalsL="9">
+				</PlanningCalendarView>
+				<PlanningCalendarView
+					key="week"
+					intervalType="Day"
+					description="{i18n>ts.taskScheduler.toolbar.viewType.week}"
+					intervalsS="7"
+					intervalsM="7"
+					intervalsL="7">
+				</PlanningCalendarView>
+				<PlanningCalendarView
+					key="month"
+					intervalType="Day"
+					description="{i18n>ts.taskScheduler.toolbar.viewType.month}"
+					intervalsS="31"
+					intervalsM="31"
+					intervalsL="31">
+				</PlanningCalendarView>
+				<PlanningCalendarView
+					key="year"
+					intervalType="Month"
+					description="{i18n>ts.taskScheduler.toolbar.viewType.year}"
+					intervalsS="12"
+					intervalsM="12"
+					intervalsL="12">
+				</PlanningCalendarView>
+			</views>
+		<rows>
+			<PlanningCalendarRow nonWorkingDays="{tasks>/nonWorkingDays}" nonWorkingHours="{tasks>/nonWorkingHours}" title="{tasks>EmployeeName}"
+				enableAppointmentsDragAndDrop="true" enableAppointmentsResize="true" appointmentResize="onAppointmentResize" enableAppointmentsCreate="true"
+				appointmentDrop="handleAppointmentDrop" appointmentDragEnter="handleAppointmentDragEnter" appointmentCreate="handleAppointmentCreate"
+				appointments="{path : 'tasks>Tasks', templateShareable: false}">
+				<appointments>
+					<unified:CalendarAppointment startDate="{path: 'tasks>StartDate', formatter:'.formatter.formatDate'}"
+						endDate="{path: 'tasks>EndDate', formatter:'.formatter.formatDate'}"
+						icon="{parts:[{path:'tasks>iconId'}, {path:'tasks>/TaskType'}], formatter:'.formatter.getTaskType'}" title="{tasks>TaskName}"></unified:CalendarAppointment>
+				</appointments>
+			</PlanningCalendarRow>
+		</rows>
+	</PlanningCalendar>
+</core:FragmentDefinition>

@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<Dialog id="EditTask-MDialog" title="{i18n>ts.taskScheduler.dialogs.editTaskToPool.title}" contentWidth="40rem">
+		<content>
+			<f:Form editable="true">
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0"
+						emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="true"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer id="EditFormContainer-M">
+						<f:formElements>
+							<f:FormElement>
+								<f:label>
+									<Label text="{i18n>ts.taskScheduler.dialogs.editTaskToPool.taskType}" wrapping="true"/>
+								</f:label>
+								<f:fields>
+									<Select id="EditTaskType-MSelect" items="{ path: 'tasks>/TaskType'}" selectedKey="{editModel>/iconId}" change="onValidateEditTask">
+										<core:Item key="{tasks>iconId}" text="{path: 'tasks>iconName', formatter: '.formatter.getI18nText'}"/>
+									</Select>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement>
+								<f:label>
+									<Label text="{i18n>ts.taskScheduler.dialogs.editTaskToPool.description}" required="true" wrapping="true"/>
+								</f:label>
+								<f:fields>
+									<Input id="EditTaskDescription-MInput" placeholder="{i18n>ts.taskScheduler.dialogs.editTaskToPool.description.placeholder}" maxLength="25" liveChange="onValidateEditTask"
+									value="{editModel>/TaskName}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement>
+								<f:label>
+									<Label text="{i18n>ts.taskScheduler.dialogs.editTaskToPool.dateAndDays}" required="true"/>
+								</f:label>
+								<f:fields>
+									<DateTimePicker id="EditTaskDate-MPicker" displayFormat="short" required="true" change="onValidateEditTask" value="{editModel>/StartDate}"/>
+									<Input id="EditTaskDays-MInput" placeholder="{i18n>ts.taskScheduler.dialogs.editTaskToPool.days.placeholder}"
+										liveChange="onValidateEditTask" value="{editModel>/Days}">
+										<layoutData>
+											<l:GridData span="XL1 L1 M2 S4"/>
+										</layoutData>
+									</Input>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</content>
+		<beginButton><Button text="{i18n>ts.taskScheduler.dialogs.editTaskToPool.btn.Ok}" press="onPressEditTaskOk" enabled="{tasks>/validateEditTask}"/></beginButton>
+		<endButton><Button text="{i18n>ts.taskScheduler.dialogs.editTaskToPool.btn.Cancel}" press="onPressEditTaskCancel"/></endButton>
+	</Dialog>
+</core:FragmentDefinition>
